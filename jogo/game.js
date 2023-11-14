@@ -40,9 +40,9 @@ var npcs = [
         width: 32,
         height: 48,
         quiz: {
-            question: "Qual é a capital do Brasil?",
-            options: ["Rio de Janeiro", "Brasília", "São Paulo", "Recife"],
-            correctAnswer: "Brasília"
+            question: "Onde ocorre a fertilização no sistema reprodutor feminino?",
+            options: ["Útero", "Ovários", "Trompas de Falópio", "Vagina"],
+            correctAnswer: "Trompas de Falópio"
         }
     },
     {
@@ -51,9 +51,9 @@ var npcs = [
         width: 32,
         height: 48,
         quiz: {
-            question: "ONDE É O CLITORIS?",
-            options: ["CLITORIS É MITO", "Marte", "Terra", "Vênus"],
-            correctAnswer: "CLITORIS É MITO"
+            question: "Qual hormônio é responsável pelo desenvolvimento dos caracteres sexuais secundários femininos?",
+            options: ["Testosterona", "Estrogênio", "Progesterona", "Prolactina"],
+            correctAnswer: "Estrogênio"
         }
     },
     {
@@ -62,9 +62,9 @@ var npcs = [
         width: 32,
         height: 48,
         quiz: {
-            question: "Quantos lados tem um triângulo?",
-            options: ["3", "4", "5", "6"],
-            correctAnswer: "3"
+            question: "Qual é a função principal do útero no sistema reprodutor feminino?",
+            options: ["Produzir óvulos", "Armazenar espermatozoides", "Desenvolver o feto durante a gestação", "Produzir hormônios sexuais"],
+            correctAnswer: "Desenvolver o feto durante a gestação"
         }
     },
     {
@@ -73,9 +73,9 @@ var npcs = [
         width: 32,
         height: 48,
         quiz: {
-            question: "Quem escreveu 'Romeu e Julieta'?",
-            options: ["Charles Dickens", "Jane Austen", "William Shakespeare", "Homer"],
-            correctAnswer: "William Shakespeare"
+            question: "O que acontece durante o processo de ovulação?",
+            options: ["Liberação de um óvulo pelos ovários", "Fertilização do óvulo pelo espermatozoide", "Implantação do embrião no útero", "Menstruação"],
+            correctAnswer: "Liberação de um óvulo pelos ovários"
         }
     },
     {
@@ -84,12 +84,13 @@ var npcs = [
         width: 32,
         height: 48,
         quiz: {
-            question: "Qual é o maior oceano do mundo?",
-            options: ["Oceano Atlântico", "Oceano Pacífico", "Oceano Índico", "Oceano Ártico"],
-            correctAnswer: "Oceano Pacífico"
+            question: "Qual o papel da progesterona no ciclo menstrual?",
+            options: ["Estimular o desenvolvimento dos órgãos sexuais femininos", "Induzir a ovulação", "Preparar o revestimento do útero para a gravidez", "Inibir a produção de óvulos pelos ovários"],
+            correctAnswer: "Preparar o revestimento do útero para a gravidez"
         }
     }
 ];
+
 
 var dialogBox = document.getElementById('dialogBox');
 var dialogText = document.getElementById('dialogText');
@@ -279,11 +280,12 @@ function draw() {
 }
 
 
-let updating = true
+let updating = true;
 
 function showDialog(question, options) {
     dialogText.innerHTML = question;
 
+    updating =  false;
     // Limpa as opções existentes
     optionsList.innerHTML = "";
 
@@ -304,6 +306,8 @@ function showDialog(question, options) {
 }
 
 function closeDialog() {
+
+    updating = true;
     var closeButton = document.getElementById('closeButton');
     closeButton.style.display = 'none';
 
@@ -383,8 +387,8 @@ function checkAnswer(index) {
 
 
 function gameLoop() {
-    if (updating)
-        update();
+    if (updating){
+        update();}
     draw();
     requestAnimationFrame(gameLoop);
 }
