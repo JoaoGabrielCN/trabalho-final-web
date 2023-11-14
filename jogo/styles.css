@@ -1,10 +1,8 @@
-/* styles.css */
-
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #87CEEB; /* Cor de fundo azul claro */
+    background-color:rgba(230, 65, 147, 0.5); /* Cor de fundo azul claro */
 }
 
 canvas {
@@ -64,4 +62,3 @@ button {
 button:hover {
     background-color: #45a049; /* Cor de fundo verde mais escura ao passar o mouse */
 }
-
