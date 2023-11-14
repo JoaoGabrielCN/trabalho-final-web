@@ -278,6 +278,9 @@ function draw() {
     ctx.fillText("Respostas Corretas: " + player.correctAnswers, 20, 60);
 }
 
+
+let updating = true
+
 function showDialog(question, options) {
     dialogText.innerHTML = question;
 
@@ -334,9 +337,14 @@ function endGame() {
 
 
 function checkAnswer(index) {
-    var interactingNPC = npcs.find(function(npc) {
-        return checkCollision(player, npc);
-    });
+    var interactingNPC 
+    npcs.forEach(npc => {
+        if (checkCollision(player, npc)) {
+            interactingNPC = npc
+        }
+    })
+
+    
 
     if (interactingNPC && !interactingNPC.answered) {
         var selectedAnswer = interactingNPC.quiz.options[index];
@@ -374,11 +382,9 @@ function checkAnswer(index) {
 }
 
 
-
-
-
 function gameLoop() {
-    update();
+    if (updating)
+        update();
     draw();
     requestAnimationFrame(gameLoop);
 }
